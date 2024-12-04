@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intel Proxy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+        iframe {
+            flex: 1; /* Take up remaining space */
+            border: none; /* Remove default border */
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            margin-right: 10px;
+        }
+        button {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Intel Proxy</h1>
+    <input type="text" id="urlInput" placeholder="Enter URL here..." />
+    <button id="loadButton">Load</button>
+</header>
+
+<iframe id="proxyFrame" src="about:blank"></iframe>
+
+<script>
+    // Get references to the input field, button, and iframe
+    const urlInput = document.getElementById('urlInput');
+    const loadButton = document.getElementById('loadButton');
+    const proxyFrame = document.getElementById('proxyFrame');
+
+    // Function to load the URL into the iframe
+    function loadUrl() {
+        const url = urlInput.value.trim();
+        // Validate the URL
+        if (url) {
+            // Check if the URL starts with http or https
+            if (!/^https?:\/\//i.test(url)) {
+                alert('Please enter a valid URL starting with http:// or https://');
+                return;
+            }
+            // Set the iframe's source to the entered URL
+            proxyFrame.src = url;
+        } else {
+            alert('Please enter a URL.');
+        }
+    }
+
+    // Add event listener to the button to load the URL when clicked
+    loadButton.addEventListener('click', loadUrl);
+
+    // Optional: Load a default URL when the page loads
+    window.onload = () => {
+        urlInput.value = 'https://www.example.com'; // Default URL
+        loadUrl(); // Load the default URL
+    };
+</script>
+
+</body>
+</html>
