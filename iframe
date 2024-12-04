@@ -1,0 +1,22 @@
+// Function to create and insert an iframe into the document
+function createIframe(src, width, height) {
+    // Create an iframe element
+    const iframe = document.createElement('iframe');
+
+    // Set the source URL for the iframe
+    iframe.src = src;
+
+    // Set the width and height of the iframe
+    iframe.width = width;
+    iframe.height = height;
+
+    // Optional: Set some styles for better appearance
+    iframe.style.border = 'none'; // Remove default border
+    iframe.style.display = 'block'; // Make it a block element
+
+    // Append the iframe to the body (or any other container)
+    document.body.appendChild(iframe);
+}
+
+// Example usage: Create an iframe that loads a specific URL
+createIframe('https://www.example.com', '600', '400');
